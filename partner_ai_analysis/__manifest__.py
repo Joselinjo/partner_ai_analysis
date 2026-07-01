@@ -31,7 +31,10 @@ Requirements:
     'website': 'https://www.linkedin.com/in/jose-manuel-lopez-33705a325/',
     'maintainer': 'Jose Manuel Lopez',
     'support': 'ljosemanuel057@gmail.com',
-    'images': ['static/description/icon.png'],
+    'images': [
+        'static/description/banner.jpg',
+        'static/description/icon.png',
+    ],
     'depends': [
         'base',
         'crm',
