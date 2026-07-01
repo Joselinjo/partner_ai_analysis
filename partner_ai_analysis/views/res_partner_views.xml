@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit_ai_analysis" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.ai.analysis</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Agregar una pestaña (page) en el notebook del formulario para mostrar el botón y el resultado del análisis -->
+                <xpath expr="//notebook" position="inside">
+                    <page string="Análisis de IA" name="ai_analysis_page">
+                        <div class="o_horizontal_separator mt-2 mb-2">Asistente de IA (Ollama Local)</div>
+                        <p class="text-muted">
+                            Haz clic en el botón de abajo para solicitar un análisis inteligente sobre el comportamiento y potencial de este cliente utilizando tu modelo local.
+                        </p>
+                        <div class="mb-3">
+                            <button name="action_generate_ai_analysis" 
+                                    string="Generar Análisis de IA" 
+                                    type="object" 
+                                    class="oe_highlight" 
+                                    icon="fa-magic"/>
+                        </div>
+                        <field name="ai_analysis" 
+                               placeholder="El análisis generado por la IA aparecerá aquí..." 
+                               nolabel="1" 
+                               readonly="0"
+                               style="width: 100%; min-height: 350px; font-family: monospace; font-size: 14px; border: 1px solid #ccc; padding: 10px; border-radius: 4px;"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+

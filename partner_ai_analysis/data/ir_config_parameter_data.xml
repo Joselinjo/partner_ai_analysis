@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="param_ollama_url" model="ir.config_parameter">
+            <field name="key">partner_ai_analysis.ollama_url</field>
+            <field name="value">http://localhost:11434</field>
+        </record>
+        <record id="param_ollama_model" model="ir.config_parameter">
+            <field name="key">partner_ai_analysis.ollama_model</field>
+            <field name="value">gemma4:e2b</field>
+        </record>
+    </data>
+</odoo>

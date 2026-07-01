@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">AI Client Analyzer — Powered by Ollama</h2>
+        <h3 class="oe_slogan" style="color:#555; font-weight:normal;">
+            Add AI analysis to any customer record. No subscriptions, no API keys — just your own local model.
+        </h3>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">What does this module do?</h2>
+        <div class="oe_span12">
+            <p style="font-size:15px; color:#555; max-width:750px; margin:0 auto; line-height:1.8;">
+                This module adds an <strong>AI Analysis</strong> tab to the customer form (<code>res.partner</code>).
+                When you click the button, it collects the client's data — sector, tags, internal notes, sale history —
+                builds a structured prompt and sends it to your local <a href="https://ollama.com" target="_blank">Ollama</a> instance.
+                The response is stored directly on the contact and logged in the chatter.
+            </p>
+            <p style="font-size:15px; color:#555; max-width:750px; margin:16px auto; line-height:1.8;">
+                The Ollama server URL and model name are configurable from <strong>Settings &gt; CRM</strong>,
+                so you can swap models without touching any code.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">The generated report covers three points</h2>
+        <div class="oe_span4" style="padding:16px;">
+            <h3 style="color:#00a09d;">1. Behavioral Profile</h3>
+            <p style="color:#666; font-size:14px;">
+                What kind of client are we dealing with? The AI evaluates engagement signals, buying maturity
+                and overall relationship potential based on the available data.
+            </p>
+        </div>
+        <div class="oe_span4" style="padding:16px;">
+            <h3 style="color:#00a09d;">2. Purchase Potential</h3>
+            <p style="color:#666; font-size:14px;">
+                An estimate of the client's long-term value, based on their industry, confirmed orders
+                and any notes left by the sales team.
+            </p>
+        </div>
+        <div class="oe_span4" style="padding:16px;">
+            <h3 style="color:#00a09d;">3. Sales Recommendation</h3>
+            <p style="color:#666; font-size:14px;">
+                A specific approach the sales rep can take — what to offer, how to frame the conversation,
+                or what objections to anticipate.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Setup in 3 steps</h2>
+        <div class="oe_span12">
+            <ol style="font-size:15px; line-height:2.2; color:#555; max-width:650px; margin:0 auto;">
+                <li>Install <a href="https://ollama.com" target="_blank">Ollama</a> and pull a model:
+                    <code>ollama run gemma4:e2b</code></li>
+                <li>Install this module and go to <strong>Settings &gt; CRM</strong> to verify the URL
+                    (<code>http://localhost:11434</code>) and model name are correct.</li>
+                <li>Open any contact, click the <strong>AI Analysis</strong> tab and hit
+                    <strong>Generate AI Analysis</strong>.</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Technical notes</h2>
+        <div class="oe_span12">
+            <ul style="font-size:14px; line-height:2; color:#666; max-width:700px; margin:0 auto;">
+                <li>Uses Ollama's <code>POST /api/generate</code> endpoint with <code>stream: false</code>.</li>
+                <li>Request timeout is set to 180s — enough for most local models on CPU.</li>
+                <li>Server URL and model are stored in <code>ir.config_parameter</code>, not in any database column.</li>
+                <li>The <code>sale</code> module is optional — if installed, confirmed orders are included in the prompt.</li>
+                <li>Comes with 4 unit tests that mock the HTTP call, so no live Ollama is needed to run CI.</li>
+                <li>Tested on Odoo Community 19.0.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
+

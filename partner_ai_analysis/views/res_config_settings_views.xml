@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.partner.ai.analysis</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="crm.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='crm']" position="inside">
+                <block title="Análisis de IA de Clientes (Ollama)" name="partner_ai_settings">
+                    <setting string="Configuración de Ollama Local" help="Establece los parámetros de conexión con tu modelo de lenguaje local.">
+                        <div class="content-group mt16">
+                            <div class="row">
+                                <label string="URL del Servidor" for="ollama_url" class="col-lg-3 o_light_label"/>
+                                <field name="ollama_url" placeholder="http://localhost:11434"/>
+                            </div>
+                            <div class="row mt8">
+                                <label string="Nombre del Modelo" for="ollama_model" class="col-lg-3 o_light_label"/>
+                                <field name="ollama_model" placeholder="gemma4:e2b"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
